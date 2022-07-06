@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.dao.IMedicineDao">
+    <select id="findBy" resultType="com.bishe.domain.Medicine" parameterType="com.bishe.domain.Medicine">
+        select * from m_message
+        <where>
+<!--            <if test="M_classifiy != null">-->
+<!--                 M_classifiy like '%${M_classifiy}%'-->
+<!--            </if>-->
+<!--            <if test="M_manufacturer != null">-->
+<!--                and M_manufacturer like '%${M_manufacturer}%'-->
+<!--            </if>-->
+            <if test="M_name != ''">
+                M_name like '%${M_name}%'
+            </if>
+            <if test="M_classifiy != ''">
+                and M_classifiy =#{M_classifiy}
+            </if>
+            <if test="M_manufacturer != ''">
+                and M_manufacturer =#{M_manufacturer}
+            </if>
+<!--            <if test="M_date != null">-->
+<!--                and M_date between #{M_date} and #{Now_date}-->
+<!--            </if>-->
+        </where>
+    </select>
+</mapper>

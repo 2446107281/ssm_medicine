@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.dao.IManuFacturerDao">
+    <select id="findBy" resultType="com.bishe.domain.ManuFacturer" parameterType="com.bishe.domain.ManuFacturer">
+        select * from manufacturer
+        <where>
+<!--            <if test="M_classifiy != null">-->
+<!--                 M_classifiy like '%${M_classifiy}%'-->
+<!--            </if>-->
+<!--            <if test="M_manufacturer != null">-->
+<!--                and M_manufacturer like '%${M_manufacturer}%'-->
+<!--            </if>-->
+            <if test="MF_name != ''">
+                MF_name like '%${MF_name}%'
+            </if>
+            <if test="MF_person != ''">
+                and MF_person like '%${MF_person}%'
+            </if>
+            <if test="M_manufacturer != ''">
+                and MF_phonenumber like '%${MF_phonenumber}%'
+            </if>
+<!--            <if test="M_date != null">-->
+<!--                and M_date between #{M_date} and #{Now_date}-->
+<!--            </if>-->
+        </where>
+    </select>
+</mapper>

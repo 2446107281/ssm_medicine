@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--配置环境-->
+   
+    <typeAliases>
+        <package name="com.bishe.domain"/>
+    </typeAliases>
+    <!--默认使用的根据id的环境-->
+<!--    <environments default="mysql">-->
+<!--        &lt;!&ndash;mysql的环境配置&ndash;&gt;-->
+<!--        <environment id="mysql">-->
+<!--            &lt;!&ndash;使用的类型&ndash;&gt;-->
+<!--            <transactionManager type="JDBC"></transactionManager>-->
+<!--            &lt;!&ndash;使用的是连接池&ndash;&gt;-->
+<!--            <dataSource type="POOLED">-->
+<!--                <property name="driver" value="com.mysql.jdbc.Driver"/>-->
+<!--                <property name="url" value="jdbc:mysql://localhost:3306/bishe"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="25257758Lixiaoha"/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+
+    <!--引入配置文件-->
+    <mappers>
+        <!--<mapper resource="com.bishe.dao.xxx.xml"></mapper>       原来的引入方式    -->
+        <!--<mapper class="com.bishe.dao.IAccountDao"/>-->
+        <package name="com.bishe.dao"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.dao.IAccountDao">
+    <select id="findBy" resultType="com.bishe.domain.Account" parameterType="com.bishe.domain.Account">
+        select * from account
+        <where>
+<!--            <if test="M_classifiy != null">-->
+<!--                 M_classifiy like '%${M_classifiy}%'-->
+<!--            </if>-->
+<!--            <if test="M_manufacturer != null">-->
+<!--                and M_manufacturer like '%${M_manufacturer}%'-->
+<!--            </if>-->
+            <if test="username != ''">
+                username like '%${username}%'
+            </if>
+            <if test="account_status != ''">
+                and account_status =#{account_status}
+            </if>
+            <if test="tel != ''">
+                and tel like '%${tel}%'
+            </if>
+<!--            <if test="M_date != null">-->
+<!--                and M_date between #{M_date} and #{Now_date}-->
+<!--            </if>-->
+        </where>
+    </select>
+</mapper>

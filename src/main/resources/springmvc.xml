@@ -1,0 +1,54 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--开启springmvc框架注解的支持-->
+    <mvc:annotation-driven/>
+
+<!--    &lt;!&ndash;启用默认Servlet&ndash;&gt;-->
+<!--    <mvc:default-servlet-handler/>-->
+    <!--开启注解扫描-->
+    <context:component-scan base-package="com.bishe">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <!--配置视图解析器-->
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/" />
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--设置那些静态资源不被过滤-->
+    <mvc:resources mapping="/dist/**/" location="/dist/"/>
+    <mvc:resources mapping="/plugins/**/" location="/plugins/"/>
+    <mvc:resources mapping="/css/**/" location="/css/"/>
+<!--    <mvc:resources mapping="/images/" location="/plugins/"/>-->
+
+
+<!--    &lt;!&ndash; 拦截器 &ndash;&gt;-->
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--            &lt;!&ndash; 拦截所有的请求，这个必须写在前面，也就是写在【不拦截】的上面 &ndash;&gt;-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            &lt;!&ndash; 下面是配置不拦截的请求 &ndash;&gt;-->
+<!--            <mvc:exclude-mapping path="/login.jsp" />-->
+<!--            <mvc:exclude-mapping path="/forgot-password.jsp" />-->
+<!--            <mvc:exclude-mapping path="/register.jsp" />-->
+<!--            <bean class="com.bishe.controller.AccountController"/>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+
+
+<!--    <bean id="accountController" class="com.bishe.controller.AccountController">-->
+<!--        <property name="accountService" ref="accountServiceImpl"/>-->
+<!--    </bean>-->
+<!--&lt;!&ndash;    <bean  id="accountServiceImpl" class="com.bishe.service.Impl.AccountServiceImpl"/>&ndash;&gt;-->
+<!--    <bean id="accountServiceImpl" class="com.bishe.service.Impl.AccountServiceImpl">-->
+<!--        <property name="iAccountDao" value="com.bishe.dao.IAccountDao"/>-->
+<!--    </bean>-->
+</beans>
